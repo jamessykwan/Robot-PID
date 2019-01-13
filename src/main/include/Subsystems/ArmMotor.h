@@ -7,21 +7,33 @@
 
 #pragma once
 
-#include <frc/commands/Subsystem.h>
+#include <Commands/Subsystem.h>
+#include "ctre/Phoenix.h"
+#include "WPILib.h"
 
 class ArmMotor : public frc::Subsystem {
- private:
-  // It's desirable that everything possible under private except
-  // for methods that implement subsystem capabilities
+private:
+	// It's desirable that everything possible under private except
+	// for methods that implement subsystem capabilities
 	TalonSRX* armMotor;
 	//Encoder* armEncoder;
 	double maxPosition;
 	double minPosition;
 	DigitalInput* lowLimit;
 	Counter* counter;
-
- public:
-  ArmMotor();
+public:
+	ArmMotor();
 	void InitDefaultCommand();
+	void move(double power);
+	void reset();
+	double getPosition();
+	double getSpeed();
+	double Limit(double num, double max);
+	Encoder* getEncoder();
+	TalonSRX* getArmMotor();
+	double getMin();
+	double getMax();
 
+	bool IsSwitchSet();
+	void InitializeCounter();
 };

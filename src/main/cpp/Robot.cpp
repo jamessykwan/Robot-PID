@@ -11,9 +11,9 @@
 #include <SmartDashboard/SmartDashboard.h>
 
 ExampleSubsystem Robot::m_subsystem;
-ArmMotor Robot::m_armMotor;
-Arm Robot::m_arm;
 OI Robot::m_oi;
+ArmPID Robot::m_armPID;
+ArmMotor Robot::m_armMotor;
 
 void Robot::RobotInit() {
   m_chooser.AddDefault("Default Auto", &m_defaultAuto);

@@ -7,12 +7,12 @@
 
 #pragma once
 
-#include <frc/commands/PIDSubsystem.h>
+#include <Commands/PIDSubsystem.h>
 
-class Arm : public frc::PIDSubsystem {
+class ArmPID : public frc::PIDSubsystem {
  public:
-  Arm();
+  ArmPID();
   double ReturnPIDInput() override;
   void UsePIDOutput(double output) override;
-  void InitDefaultCommand() override;
+  void InitDefaultCommand() override;  
 };

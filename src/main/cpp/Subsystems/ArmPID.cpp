@@ -5,34 +5,31 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Subsystems/Arm.h"
-#include "../Robot.cpp"
+#include "Subsystems/ArmPID.h"
 
-#include <frc/livewindow/LiveWindow.h>
-#include <frc/smartdashboard/SmartDashboard.h>
+#include <LiveWindow/LiveWindow.h>
+#include <SmartDashboard/SmartDashboard.h>
 
-Arm::Arm()
-    : PIDSubsystem("Arm", 1.0, 0.0, 0.0) {
+ArmPID::ArmPID()
+    : PIDSubsystem("ArmPID", 1.0, 0.0, 0.0) {
   // Use these to get going:
-  // SetSetpoint() -  Sets where the PID controller should move the system
-  //                  to
-  // Enable() - Enables the PID controller.
+  //SetSetpoint() //Sets where the PID controller should move the system
+  Enable(); //Enables the PID controller.
 }
 
-double Arm::ReturnPIDInput() {
+double ArmPID::ReturnPIDInput() {
   // Return your input value for the PID loop
   // e.g. a sensor, like a potentiometer:
   // yourPot->SetAverageVoltage() / kYourMaxVoltage;
   return 0;
 }
 
-void Arm::UsePIDOutput(double output) {
+void ArmPID::UsePIDOutput(double output) {
   // Use output to drive your system, like a motor
   // e.g. yourMotor->Set(output);
-  m_armMotor->move(output)
 }
 
-void Arm::InitDefaultCommand() {
+void ArmPID::InitDefaultCommand() {
   // Set the default command for a subsystem here.
   // SetDefaultCommand(new MySpecialCommand());
 }

@@ -15,13 +15,15 @@
 #include "Commands/MyAutoCommand.h"
 #include "OI.h"
 #include "Subsystems/ExampleSubsystem.h"
+#include "Subsystems/ArmPID.h"
+#include "Subsystems/ArmMotor.h"
 
 class Robot : public frc::TimedRobot {
  public:
   static ExampleSubsystem m_subsystem;
-  static ArmMotor m_armMotor;
-  static Arm m_arm;
   static OI m_oi;
+  static ArmPID m_armPID;
+  static ArmMotor m_armMotor;
 
   void RobotInit() override;
   void RobotPeriodic() override;
