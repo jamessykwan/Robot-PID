@@ -7,32 +7,9 @@
 
 #include "Subsystems/ArmMotor.h"
 
-ArmMotor::ArmMotor() : Subsystem("ExampleSubsystem") {}
+ArmMotor::ArmMotor() : Subsystem("ArmMotor") {}
 
-private:
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
-	TalonSRX* armMotor;
-	//Encoder* armEncoder;
-	double maxPosition;
-	double minPosition;
-	DigitalInput* lowLimit;
-	Counter* counter;
-public:
-	Arm();
-	void InitDefaultCommand();
-	void move(double power);
-	void reset();
-	double getPosition();
-	double getSpeed();
-	double Limit(double num, double max);
-	Encoder* getEncoder();
-	TalonSRX* getArmMotor();
-	double getMin();
-	double getMax();
 
-	bool IsSwitchSet();
-	void InitializeCounter();
 
 void ArmMotor::InitDefaultCommand() {
   // Set the default command for a subsystem here.
@@ -41,3 +18,30 @@ void ArmMotor::InitDefaultCommand() {
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+	void move(double power){
+
+  }
+	void reset(){
+
+  }
+	double getPosition(){
+
+  }
+	double getSpeed(){
+
+  }
+	double Limit(double num, double max){
+
+  }
+	Encoder* getEncoder(){
+
+  }
+	TalonSRX* getArmMotor(){
+
+  }
+	double getMin(){
+
+  }
+	double getMax(){
+    
+  }

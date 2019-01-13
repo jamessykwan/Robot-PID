@@ -13,8 +13,15 @@ class ArmMotor : public frc::Subsystem {
  private:
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities
+	TalonSRX* armMotor;
+	//Encoder* armEncoder;
+	double maxPosition;
+	double minPosition;
+	DigitalInput* lowLimit;
+	Counter* counter;
 
  public:
   ArmMotor();
-  void InitDefaultCommand() override;
+	void InitDefaultCommand();
+
 };
