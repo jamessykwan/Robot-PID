@@ -11,6 +11,8 @@
 #include <SmartDashboard/SmartDashboard.h>
 
 ExampleSubsystem Robot::m_subsystem;
+ArmMotor Robot::m_armMotor;
+Arm Robot::m_arm;
 OI Robot::m_oi;
 
 void Robot::RobotInit() {

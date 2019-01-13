@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Subsystems/Arm.h"
+#include "../Robot.cpp"
 
 #include <frc/livewindow/LiveWindow.h>
 #include <frc/smartdashboard/SmartDashboard.h>
@@ -28,6 +29,7 @@ double Arm::ReturnPIDInput() {
 void Arm::UsePIDOutput(double output) {
   // Use output to drive your system, like a motor
   // e.g. yourMotor->Set(output);
+  m_armMotor->move(output)
 }
 
 void Arm::InitDefaultCommand() {

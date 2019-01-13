@@ -18,7 +18,22 @@ private:
 	double minPosition;
 	DigitalInput* lowLimit;
 	Counter* counter;
-  
+public:
+	Arm();
+	void InitDefaultCommand();
+	void move(double power);
+	void reset();
+	double getPosition();
+	double getSpeed();
+	double Limit(double num, double max);
+	Encoder* getEncoder();
+	TalonSRX* getArmMotor();
+	double getMin();
+	double getMax();
+
+	bool IsSwitchSet();
+	void InitializeCounter();
+
 void ArmMotor::InitDefaultCommand() {
   // Set the default command for a subsystem here.
   // SetDefaultCommand(new MySpecialCommand());
