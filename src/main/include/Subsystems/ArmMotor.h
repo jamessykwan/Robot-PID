@@ -11,7 +11,7 @@
 #include "ctre/Phoenix.h"
 #include "WPILib.h"
 
-class ArmMotor : public frc::Subsystem {
+class ArmMotor : public frc::Subsystem, PIDOutput {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
