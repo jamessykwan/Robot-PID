@@ -9,8 +9,6 @@
 
 ArmMotor::ArmMotor() : Subsystem("ArmMotor") {}
 
-
-
 void ArmMotor::InitDefaultCommand() {
   // Set the default command for a subsystem here.
   // SetDefaultCommand(new MySpecialCommand());
@@ -18,30 +16,68 @@ void ArmMotor::InitDefaultCommand() {
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-	void move(double power){
 
-  }
-	void reset(){
+void ArmMotor::move(double power) {
+	armMotor->Set(ControlMode::PercentOutput, Arm::Limit(power, 1));
+	//armMotor->
+	//ControlMode test = armMotor->GetControlMode();
 
-  }
-	double getPosition(){
 
-  }
-	double getSpeed(){
+	//if(test == ControlMode::Disabled)
+		//armMotor->SetInverted(true);
+}
 
-  }
-	double Limit(double num, double max){
+void ArmMotor::reset()
+{
+	armMotor->SetSelectedSensorPosition(0, 0, 10);
+	minPosition = getPosition();
+	maxPosition = minPosition + 370;
+	std::cout << "min position" << minPosition << std::endl;
+}
 
-  }
-	Encoder* getEncoder(){
+double ArmMotor::getPosition() {
+	return armMotor->GetSelectedSensorPosition(0);
+}
 
-  }
-	TalonSRX* getArmMotor(){
+double ArmMotor::getSpeed() {
+	return armMotor->GetSelectedSensorVelocity(0);
+}
 
-  }
-	double getMin(){
+//Encoder* Arm::getEncoder() {
+	//return armEncoder;
+//}
 
-  }
-	double getMax(){
-    
-  }
+TalonSRX* ArmMotor::getArmMotor() {
+	return armMotor;
+}
+
+double ArmMotor::Limit(double num, double max) {
+	if (num > max)
+		return max;
+
+	if (num < -max)
+		return -max;
+
+	return num;
+}
+
+double ArmMotor::getMin()
+{
+	return minPosition;
+}
+
+double ArmMotor::getMax()
+{
+	return maxPosition;
+}
+
+
+bool ArmMotor::IsSwitchSet()
+{
+     return counter->Get() > 0;
+}
+
+void ArmMotor::InitializeCounter()
+{
+     counter->Reset();
+}
