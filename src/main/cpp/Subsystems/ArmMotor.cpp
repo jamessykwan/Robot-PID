@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Subsystems/ArmMotor.h"
-#include "../RobotMap.h"
 
 ArmMotor::ArmMotor() : Subsystem("ArmMotor"), armMotor(new TalonSRX(5)), minPosition(-84),
 maxPosition(minPosition + 370)
@@ -33,7 +32,7 @@ void ArmMotor::InitDefaultCommand() {
 // here. Call these from Commands.
 
 void ArmMotor::move(double power) {
-	armMotor->Set(ControlMode::PercentOutput, Arm::Limit(power, 1));
+	armMotor->Set(ControlMode::PercentOutput, ArmMotor::Limit(power, 1));
 	//armMotor->
 	//ControlMode test = armMotor->GetControlMode();
 
@@ -47,7 +46,6 @@ void ArmMotor::reset()
 	armMotor->SetSelectedSensorPosition(0, 0, 10);
 	minPosition = getPosition();
 	maxPosition = minPosition + 370;
-	std::cout << "min position" << minPosition << std::endl;
 }
 
 double ArmMotor::getPosition() {
