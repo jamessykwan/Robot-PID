@@ -9,6 +9,7 @@
 
 #include <LiveWindow/LiveWindow.h>
 #include <SmartDashboard/SmartDashboard.h>
+#include <Robot.h">
 
 ArmPID::ArmPID()
     : PIDSubsystem("ArmPID", 1.0, 0.0, 0.0) {
@@ -27,6 +28,7 @@ double ArmPID::ReturnPIDInput() {
 void ArmPID::UsePIDOutput(double output) {
   // Use output to drive your system, like a motor
   // e.g. yourMotor->Set(output);
+  m_armMotor.move(output);
 }
 
 void ArmPID::InitDefaultCommand() {
