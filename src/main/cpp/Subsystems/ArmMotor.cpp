@@ -6,8 +6,23 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Subsystems/ArmMotor.h"
+#include "../RobotMap.h"
 
-ArmMotor::ArmMotor() : Subsystem("ArmMotor") {}
+ArmMotor::ArmMotor() : Subsystem("ArmMotor"), armMotor(new TalonSRX(5)), minPosition(-84),
+maxPosition(minPosition + 370)
+{
+	//armEncoder->Reset();
+	armMotor->ConfigSelectedFeedbackSensor(FeedbackDevice::Analog, 0, 10);
+		// left->ConfigEncoderCodesPerRev(360);
+	armMotor->SetSelectedSensorPosition(0,0,10);
+
+	lowLimit = new DigitalInput(1);
+	counter = new Counter(lowLimit);
+
+	armMotor->SetInverted(false);
+
+
+}
 
 void ArmMotor::InitDefaultCommand() {
   // Set the default command for a subsystem here.

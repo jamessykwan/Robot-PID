@@ -13,5 +13,6 @@
   },
   "C_Cpp.default.configurationProvider": "vscode-wpilib",
   "wpilib.online": true,
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "C_Cpp.errorSquiggles": "Disabled"
 }
